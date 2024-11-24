@@ -26,21 +26,23 @@ export default function Home() {
   };
 
   return (
-    <div className="bg-base-100 flex h-screen w-screen flex-col items-center justify-center gap-5">
-      <h1>PlantCam</h1>
-      <div className="relative h-96 w-96">
-        <Image
-          src="http://ec2-13-60-8-36.eu-north-1.compute.amazonaws.com/cam"
-          alt="PlantCam"
-          className="object-cover"
-          fill
-          priority
-        />
+    <div className="bg-base-100 h-screen w-screen">
+      <div className="container flex h-full flex-col items-center justify-center gap-5">
+        <h1>PlantCam</h1>
+        <div className="relative h-96 w-72">
+          <Image
+            src="http://ec2-13-60-8-36.eu-north-1.compute.amazonaws.com/cam"
+            alt="PlantCam"
+            className="object-cover"
+            fill
+            priority
+          />
+        </div>
+        <button className="btn btn-primary" onClick={dispatchWaterCommand}>
+          Water
+          {loading && <div className="loading loading-sm loading-spinner" />}
+        </button>
       </div>
-      <button className="btn btn-primary" onClick={dispatchWaterCommand}>
-        Water
-        {loading && <div className="loading loading-sm loading-spinner" />}
-      </button>
     </div>
   );
 }
