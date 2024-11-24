@@ -3,6 +3,8 @@
 import Image from "next/image";
 import { useState } from "react";
 
+export const dynamic = "force-dynamic";
+
 export default function Home() {
   const [loading, setLoading] = useState(false);
 
