@@ -36,6 +36,7 @@ export default function Home() {
             className="object-cover"
             fill
             priority
+            loader={({ src }) => src}
           />
         </div>
         <button className="btn btn-primary" onClick={dispatchWaterCommand}>
