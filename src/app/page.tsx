@@ -31,7 +31,7 @@ export default function Home() {
         <h1>PlantCam</h1>
         <div className="relative h-96 w-72">
           <Image
-            src="http://ec2-13-60-8-36.eu-north-1.compute.amazonaws.com/cam"
+            src="https://ec2-13-60-8-36.eu-north-1.compute.amazonaws.com/cam"
             alt="PlantCam"
             className="object-cover"
             fill
