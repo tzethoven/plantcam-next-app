@@ -29,7 +29,7 @@ export const Chart = ({ chartData, chartConfig }: Props) => {
       <CardHeader>
         <CardTitle>Brightness</CardTitle>
         <CardDescription>
-          Showing total visitors for the last 6 months
+          Showing brightness with three metric variations
         </CardDescription>
       </CardHeader>
       <CardContent>
