@@ -19,7 +19,7 @@ import {
 } from "@/components/ui/chart";
 
 interface Props {
-  chartData: Array<any>;
+  chartData: Array<{ [key: string]: string | number }>;
   chartConfig: ChartConfig;
 }
 

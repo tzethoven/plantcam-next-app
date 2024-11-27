@@ -17,17 +17,17 @@ export default function Home() {
   }, []);
 
   const loadBrightness = async () => {
-    let response = await fetch(
+    const response = await fetch(
       "https://ec2-13-60-8-36.eu-north-1.compute.amazonaws.com/brightness",
       { method: "GET" },
     );
-    let data = await response.json();
+    const data = await response.json();
 
     const headers = data[0].replace("\n", "").split(",");
 
     const brightnessData = data.slice(-20).map((row: string) => {
       const rowArray = row.replace("\n", "").split(",");
-      const entry = {} as any;
+      const entry = {} as { [key: string]: number | string };
       headers.forEach((header: string, i: number) => {
         if (header === "datetime")
           entry[header] = new Date(rowArray[i]).toLocaleTimeString();
