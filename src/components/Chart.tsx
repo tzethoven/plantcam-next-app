@@ -1,7 +1,7 @@
 "use client";
 
 import { TrendingUp } from "lucide-react";
-import { CartesianGrid, Line, LineChart, XAxis } from "recharts";
+import { CartesianGrid, Line, LineChart, XAxis, YAxis } from "recharts";
 
 import {
   Card,
@@ -49,6 +49,12 @@ export const Chart = ({ chartData, chartConfig }: Props) => {
               axisLine={false}
               tickMargin={8}
               tickFormatter={(value) => value.slice(0, 5)}
+            />
+            <YAxis
+              tickLine={false}
+              axisLine={false}
+              tickMargin={8}
+              tickFormatter={(value) => value.toFixed(2)}
             />
             <ChartTooltip cursor={false} content={<ChartTooltipContent />} />
             <Line
