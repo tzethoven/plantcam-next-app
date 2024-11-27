@@ -25,16 +25,19 @@ export default function Home() {
 
     const headers = data[0].replace("\n", "").split(",");
 
-    const brightnessData = data.slice(-20).map((row: string) => {
-      const rowArray = row.replace("\n", "").split(",");
-      const entry = {} as { [key: string]: number | string };
-      headers.forEach((header: string, i: number) => {
-        if (header === "datetime")
-          entry[header] = new Date(rowArray[i]).toLocaleTimeString();
-        else entry[header] = parseFloat(rowArray[i]);
+    const brightnessData = data
+      .slice(40)
+      .filter((_: any, i: number) => !!(i % 2))
+      .map((row: string) => {
+        const rowArray = row.replace("\n", "").split(",");
+        const entry = {} as { [key: string]: number | string };
+        headers.forEach((header: string, i: number) => {
+          if (header === "datetime")
+            entry[header] = new Date(rowArray[i]).toLocaleTimeString();
+          else entry[header] = parseFloat(rowArray[i]);
+        });
+        return entry;
       });
-      return entry;
-    });
 
     setChartConfig({
       brightness_mean: {
