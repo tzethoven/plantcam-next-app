@@ -1,7 +1,9 @@
 "use client";
 
 import { Chart } from "@/components/Chart";
+import { Button } from "@/components/ui/button";
 import { ChartConfig } from "@/components/ui/chart";
+import { Loader2 } from "lucide-react";
 import Image from "next/image";
 import { useEffect, useState } from "react";
 
@@ -26,7 +28,7 @@ export default function Home() {
     const headers = data[0].replace("\n", "").split(",");
 
     const brightnessData = data
-      .slice(40)
+      .slice(-80)
       .filter((_: any, i: number) => !!(i % 2))
       .map((row: string) => {
         const rowArray = row.replace("\n", "").split(",");
@@ -75,11 +77,11 @@ export default function Home() {
   };
 
   return (
-    <div className="h-screen w-screen bg-base-100">
+    <div className="flex flex-col">
       <div className="container mx-auto flex flex-col items-center justify-center gap-5 py-5">
         <div className="flex min-h-screen flex-col items-center justify-center gap-3">
           <h1>PlantCam</h1>
-          <div className="relative h-96 w-72">
+          <div className="relative h-96 w-96 border border-foreground">
             <Image
               src="https://ec2-13-60-8-36.eu-north-1.compute.amazonaws.com/cam"
               alt="PlantCam"
@@ -91,18 +93,14 @@ export default function Home() {
               loader={({ src }) => src}
             />
           </div>
-          <button className="btn btn-primary" onClick={dispatchWaterCommand}>
+          <Button variant="default" onClick={dispatchWaterCommand}>
+            {loading && <Loader2 className="animate-spin" />}
             Water
-            {loading && <div className="loading loading-spinner loading-sm" />}
-          </button>
+          </Button>
         </div>
 
-        <div className="w-full">
-          {chartData && chartConfig ? (
-            <Chart chartData={chartData} chartConfig={chartConfig} />
-          ) : (
-            <div className="loading loading-spinner loading-lg text-primary" />
-          )}
+        <div className="flex w-full flex-col">
+          <Chart chartData={chartData} chartConfig={chartConfig} />
         </div>
       </div>
     </div>
