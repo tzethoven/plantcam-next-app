@@ -24,12 +24,12 @@ export default function Home() {
       { method: "GET" },
     );
     const data = await response.json();
-
+    console.log({ data });
     const headers = data[0].replace("\n", "").split(",");
 
     const brightnessData = data
-      .slice(-80)
-      .filter((_: any, i: number) => !!(i % 2))
+      .slice(-20)
+      // .filter((_: any, i: number) => !!(i % 2))
       .map((row: string) => {
         const rowArray = row.replace("\n", "").split(",");
         const entry = {} as { [key: string]: number | string };
@@ -52,6 +52,18 @@ export default function Home() {
       },
       brightness_perceived: {
         label: "Perceived Brightness",
+        color: "hsl(var(--chart-3))",
+      },
+      brightness_red: {
+        label: "Red Brightness",
+        color: "hsl(var(--chart-1))",
+      },
+      brightness_green: {
+        label: "Green Brightness",
+        color: "hsl(var(--chart-2))",
+      },
+      brightness_blue: {
+        label: "Blue Brightness",
         color: "hsl(var(--chart-3))",
       },
     });

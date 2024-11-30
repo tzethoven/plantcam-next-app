@@ -1,6 +1,6 @@
 "use client";
 
-import { Loader2, TrendingUp } from "lucide-react";
+import { Loader2 } from "lucide-react";
 import { CartesianGrid, Line, LineChart, XAxis, YAxis } from "recharts";
 
 import {
@@ -59,6 +59,27 @@ export const Chart = ({ chartData, chartConfig }: Props) => {
               />
               <ChartTooltip cursor={false} content={<ChartTooltipContent />} />
               <Line
+                dataKey="brightness_red"
+                type="monotone"
+                stroke="var(--color-brightness_red)"
+                strokeWidth={2}
+                dot={false}
+              />
+              <Line
+                dataKey="brightness_green"
+                type="monotone"
+                stroke="var(--color-brightness_green)"
+                strokeWidth={2}
+                dot={false}
+              />
+              <Line
+                dataKey="brightness_blue"
+                type="monotone"
+                stroke="var(--color-brightness_blue)"
+                strokeWidth={2}
+                dot={false}
+              />
+              {/* <Line
                 dataKey="brightness_mean"
                 type="monotone"
                 stroke="var(--color-brightness_mean)"
@@ -78,7 +99,7 @@ export const Chart = ({ chartData, chartConfig }: Props) => {
                 stroke="var(--color-brightness_perceived)"
                 strokeWidth={2}
                 dot={false}
-              />
+              /> */}
             </LineChart>
           </ChartContainer>
         ) : (
